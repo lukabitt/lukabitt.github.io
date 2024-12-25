@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Noto+Sans:ital,wght@0,900;1,900&family=Roboto+Slab:wght@300&family=Roboto:wght@500;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>Quiz</title>
+        <style>
+            body {
+                font-family: 'Major Mono Display', sans-serif;;
+            }
+
+                .quiz-container {
+        background-color: #222222; /* Leicht grauer Hintergrund */
+        border-radius: 10px; /* Abgerundete Ecken */
+        padding: 20px; /* Innenabstand */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten für einen 3D-Effekt */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Vertikale Zentrierung */
+        height: 40vh; /* Höhe der Kachel auf 100% der Ansichtshöhe setzen */
+    }
+
+    .question-section {
+            margin-bottom: 20px; /* Abstand zwischen Frage und Antworten */
+        }
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 1001;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.quiz-instructions {
+            background-color: #222222; /* Dunkler Hintergrund */
+            color: white; /* Textfarbe */
+            border-radius: 10px; /* Abgerundete Ecken */
+            padding: 20px; /* Innenabstand */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten für einen 3D-Effekt */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertikale Zentrierung */
+            align-items: center; /* Horizontale Zentrierung */
+            height: 60vh; /* Höhe des Containers */
+        }
+
+        .quiz-container {
+            display: none; /* Zunächst verborgen */
+            text-align: center;
+            background-color: #222222; /* Dunkler Hintergrund */
+            border-radius: 10px; /* Abgerundete Ecken */
+            padding: 20px; /* Innenabstand */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten für einen 3D-Effekt */
+            width: 100%; /* Breite anpassen */
+            max-width: 600px; /* Maximale Breite */
+            margin: auto; /* Zentrieren */
+            height: auto; /* Automatische Höhe */
+        }
+        </style>
+     
+    </head>
+    <body class="d-flex justify-content-center align-items-center" style="height: 100vh; margin: 0;">
+
+        <div class="container quiz-instructions text-center">
+            <h1>Willkommen bei deiner Reise ins Leben eines Ravers</h1>
+            <p>In diesem Quiz wirst du Fragen zu deiner anstehenden Reise beantworten.</p>
+            <p>Du hast allerdings nur einen Versuch.</p>
+            <p>Viel Glück!</p>
+            <button id="start-quiz" class="btn btn-light mt-2">Weiter</button>
+        </div>
+        <div class="container quiz-container text-center">
+            <div id="question" class="question-section mb-4 text-white"></div>
+            <div id="answers" class="d-flex flex-column align-items-center"></div>
+        </div>
+        <div id="popup" class="popup hidden">
+            <p>Schade! Das war leider die falsche Antwort. <br> Vielleicht klappt es ja nächstes Jahr. <br> Die Retoure wurde beantragt.</p>
+            <button class="btn btn-dark mt-2" onclick="closePopup()">Quiz beenden</button>
+        </div>
+        <div id="overlay" class="overlay hidden"></div>
+    
+        <script src="scripts/quiz.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

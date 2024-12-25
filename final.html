@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Noto+Sans:ital,wght@0,900;1,900&family=Roboto+Slab:wght@300&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Dein Gewinn</title>
+    <style>
+        #code {
+            font-size: 5rem;
+            color: white;
+            text-align: center; /* Zentriert den Text */
+            margin-top: 20px;
+            opacity: 0; /* Anfangs unsichtbar */
+            transition: opacity 1s ease; /* Übergang für die Sichtbarkeit */
+        }
+		.code {
+			font-family: 'Major Mono Display', sans-serif;
+		}
+
+        #code {
+    font-size: 5rem;
+    color: white;
+    text-align: center; /* Zentriert den Text */
+    margin-top: 20px;
+    opacity: 0; /* Anfangs unsichtbar */
+    transition: opacity 1s ease; /* Übergang für die Sichtbarkeit */
+    position: absolute; /* Positionierung für zentrierte Darstellung */
+    top: 50%; /* Vertikale Zentrierung */
+    left: 50%; /* Horizontale Zentrierung */
+    transform: translate(-50%, -50%); /* Verschiebung zur Mitte */
+}
+    </style>
+    <link rel="stylesheet" href="fog.css">
+</head>
+<body>
+    
+    <!-- <video id="reward-video" width="100%" height="100%" autoplay> -->
+        <!-- <source src="essen.mp4" type="video/mp4"> -->
+        <!-- Your browser does not support the video tag. -->
+    <!-- </video> -->
+        <iframe
+        id="reward-video"
+        src="https://www.youtube.com/embed/JaX94vrOvLU?controls=0&allowfullscreen&enablejsapi=1&rel=0"
+        frameborder="0"
+        style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    <div id="code" class="code">808</div> <!-- Beispielcode -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+	<script>
+		const video = document.getElementById('reward-video');
+		const code = document.getElementById('code');
+	
+		// Funktion zum Ausblenden des Videos
+		// function hideVideo() {
+		// 	video.style.opacity = 0; // Setze die Opazität auf 0
+		// 	setTimeout(() => {
+		// 		video.style.display = 'none'; // Setze das Display auf 'none' nach der Übergangszeit
+		// 	}, 1000); // Warte 1 Sekunde für den Übergang
+		// }
+	
+		// // Event-Listener für das Ende des Videos
+		// video.addEventListener('ended', () => {
+		// 	code.style.opacity = 1; // Setze die Opazität auf 1, um den Code sichtbar zu machen
+		// 	hideVideo(); // Blende das Video aus
+		// });
+
+    let player;
+
+    // Diese Funktion wird von der IFrame API aufgerufen, wenn das Video geladen ist
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('reward-video', {
+            events: {
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    // Diese Funktion wird aufgerufen, wenn sich der Status des Players ändert
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+            hideVideo(); // Blende das Video aus, wenn es zu Ende ist
+            code.style.opacity = 1;
+        }
+    }
+
+    // Funktion zum Ausblenden des Videos
+    function hideVideo() {
+        const video = document.getElementById('reward-video');
+        video.style.opacity = 0; // Setze die Opazität auf 0
+        setTimeout(() => {
+            video.style.display = 'none'; // Setze das Display auf 'none' nach der Übergangszeit
+        }, 1000); // Warte 1 Sekunde für den Übergang
+    }
+</script>
+</body>
+</html>
